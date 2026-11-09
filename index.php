@@ -13,29 +13,11 @@
     <div class="container">
         <h1>Listado de editoriales</h1>
 
-        <a href="edit_editor.php">Crear editorial</a>
+        
 
         <?php
         require_once 'util.php';
-        if (isset($_POST["accion"])) {
-            $accion = $_POST["accion"];
-            if ($accion == "borrar") {
-                $id = $_POST["id"] ?? 0;
-                if ($id > 0) {
-                    try {
-                        $eliminado = deletePublisher($id);
-                        if($eliminado){
-                            showMsg("Se ha eliminado la editorial correctamente", "success");
-                        }
-                        else{
-                            showMsg("Ha ocurrido un error y no se ha  podido eliminar la editorial", "danger");
-                        }
-                    } catch (Exception $e) {
-                        showMsg("Ha ocurrido un error inesperado", "danger");
-                    }
-                }
-            }
-        } else if(isset($_POST["eliminar-seleccion"])){
+      if(isset($_POST["eliminar-seleccion"])){
             $idsSeleccionados = $_POST["ids_seleccionados"] ?? [];
            
             if (!empty($idsSeleccionados)) {
